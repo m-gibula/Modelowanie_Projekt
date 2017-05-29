@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Subjects" />
-        <activity android:name=".subjectDetails" />
+        <activity android:name=".subjectDetails" android:noHistory="true"/>
         <activity android:name=".ListActivity"></activity>
     </application>
 

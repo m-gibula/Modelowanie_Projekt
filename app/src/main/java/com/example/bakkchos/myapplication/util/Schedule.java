@@ -6,6 +6,7 @@
 package com.example.bakkchos.myapplication.util;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  *
@@ -14,10 +15,15 @@ import java.util.ArrayList;
 public class Schedule {
     Filler filler;
     ArrayList<Subject> groupSched = new ArrayList<>();
+    Map<String, String> opisy;
 
     public Schedule() {
         filler = new Filler();
         filler.fillSchedule();
+        opisy = filler.getDesc();
+    }
+    public Map<String, String> getDesc(){
+        return opisy;
     }
     public ArrayList<Subject> fullSchedule(){
         return filler.listOfSubjects();

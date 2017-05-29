@@ -6,6 +6,8 @@
 package com.example.bakkchos.myapplication.util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -19,11 +21,11 @@ public class Filler {
     private static final String SR = "SRODA";
     private static final String CZW = "CZWARTEK";
     private static final String PT = "PIATEK";
-
+    Map<String,String> opisy = new HashMap<>();
     public Filler() {
-        
+
     }
-    
+
     private void addSubject(String dzien,String godzina, String grupa, String nazwa_przedmiotu,String prowadzacy,String sala, String typ_zajec){
         Subject e = new Subject();
         e.setDzien(dzien);
@@ -35,6 +37,7 @@ public class Filler {
         e.setTyp_zajec(typ_zajec);
         this.lista.add(e);
     }
+
     public void fillSchedule(){
         this.addSubject(WT,"08:00","ALL", "Techniki Multimedialne", "prof. dr hab. inż. M. Gorgoń", "C202", "W");
         this.addSubject(WT,"09:45","LT1", "Techniki Multimedialne", "mgr inż. M. Bydłosz", "D104", "L");
@@ -42,7 +45,7 @@ public class Filler {
         this.addSubject(WT,"13:15","LT2", "Techniki Multimedialne", "mgr inż. M. Bydłosz", "D104", "L");
         this.addSubject(WT,"15:00","PZ2", "Zespołowy Projekt \nInformatyczny", "dr inż S. Stoch", "D106", "P");
         this.addSubject(WT,"16:45","C1", "Techniki Multimedialne", "prof. dr hab. inż. M. Gorgoń", "C202", "C");
-        
+
         this.addSubject(SR,"08:00","ALL", "Testowanie i jakość \noprogramowania", "mgr inż A. Pyteraf", "C202", "W");
         this.addSubject(SR,"09:45","LI1", "Testowanie i jakość \noprogramowania", "mgr inż A. Pyteraf", "C112", "L");
         this.addSubject(SR,"09:45","LA2", "Technologie aplikacji \ninternetowych", "mgr inż R. Jędryka", "A203", "L");
@@ -50,7 +53,7 @@ public class Filler {
         this.addSubject(SR,"11:30","LA1", "Technologie aplikacji \ninternetowych", "mgr inż R. Jędryka", "A203", "L");
         this.addSubject(SR,"13:15","ALL", "Technologie aplikacji \ninternetowych", "mgr inż R. Jędryka", "A120", "W");
         this.addSubject(SR,"13:15","PA1", "Technologie aplikacji \ninternetowych", "mgr inż R. Jędryka", "C112", "P");
-        
+
         this.addSubject(CZW,"08:00","LM1", "Programowanie systemów \nmobilnych", "mgr inż A. Pieprzycki", "C212", "L");
         this.addSubject(CZW,"08:00","PA2", "Technologie aplikacji \ninternetowych", "mgr inż R. Jędryka", "C112", "P");
         this.addSubject(CZW,"09:45","ALL", "Programowanie gier", "dr inż. P. Pawlik", "C302", "W");
@@ -58,18 +61,33 @@ public class Filler {
         this.addSubject(CZW,"13:15","LM2", "Programowanie systemów \nmobilnych", "mgr inż A. Pieprzycki", "C212", "L");
         this.addSubject(CZW,"13:15","LG1", "Programowanie gier", "dr inż. P. Pawlik", "C112", "L");
         this.addSubject(CZW,"16:45","LG2", "Programowanie gier", "dr inż. P. Pawlik", "C112", "L");
-        
+
         this.addSubject(PT,"08:00","ALL", "Modelowanie procesów \nbiznesowych", "mgr inż T. Potempa", "C202", "W");
         this.addSubject(PT,"09:45","LB1", "Modelowanie procesów \nbiznesowych", "mgr inż T. Potempa", "C112", "L");
         this.addSubject(PT,"11:30","LB2", "Modelowanie procesów biznesowych", "mgr inż T. Potempa", "C112", "L");
         this.addSubject(PT,"12:30","LK1", "Kryptografia i \nbezpieczeństwo sieci", "dr inż W. Iwaniec", "C105", "L");
         this.addSubject(PT,"14:45","ALL", "Kryptografia i \nbezpieczeństwo sieci", "dr inż W. Iwaniec", "C306", "W");
         this.addSubject(PT,"16:00","LK2", "Kryptografia i \nbezpieczeństwo sieci", "dr inż W. Iwaniec", "C105", "L");
-        
-        
+
+        opisy.put("Kryptografia i \nbezpieczeństwo sieci","Przedmiot skupiający się na przedstawieniu zagadnień " +
+                "związanych z bezpieczeństwem sieci w oparciu o praktyczne i nowoczesne metody kryptograficzne.");
+        opisy.put("Modelowanie procesów \nbiznesowych","Przedmiot przedstawiający techniki oraz zasady rządącę " +
+                "projektowaniem procesów biznesowych włącznie z przedstawieniem składni, notacji aż po wdrożenie.");
+        opisy.put("Programowanie gier","Przedmiot przedstawiający proces tworzenia gier kemputerowych na różne platformy" +
+                " z użyciem silnika Unity w najnowszej wersji. Przedstawiony jest spójny proces produkcji od koncepcji po gotowy produkt." +
+                " Przedmiot zakończony projektem.");
+        opisy.put("Programowanie systemów \nmobilnych","Na zajęciach wyjaśniane są zagadnienia związane z programowaniem aplikacji na " +
+                "system Android, od tych podstawowych aż po najbardziej skomplikowane mechanizmy.");
+        opisy.put("Technologie aplikacji \ninternetowych","Przedstawiona jest użytkowa technologia JSP - Servlet");
+        opisy.put("Testowanie i jakość \noprogramowania","Przedstawiane zagadnienia : Git, JS, Node.js, testy jednostkowe, testy mutacyjne");
+        opisy.put("Techniki Multimedialne","Wszystko co związane z cyfrowym przetwarzaniem obrazu oraz sygnału audio.");
+        opisy.put("Zespołowy Projekt \nInformatyczny","Projektowanie aplikacji od strony teoretycznej");
     }
     public ArrayList<Subject> listOfSubjects(){
         return this.lista;
+    }
+    public Map<String, String> getDesc(){
+        return opisy;
     }
     public ArrayList<Subject> listOrderByDay(String day){
         for(Subject x : lista){
@@ -79,6 +97,6 @@ public class Filler {
         }
         return this.day_list;
     }
-    
+
     
 }

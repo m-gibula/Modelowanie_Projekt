@@ -55,6 +55,7 @@ public class Subjects extends AppCompatActivity {
                 show_day = PT;
                 break;
         }
+        show_day = SR;
         Schedule harm = new Schedule();
         ArrayList<Subject> today = harm.byDaySchedule(show_day);
         ArrayList<Subject> today_and_group = harm.groupSchedule(today, group);
